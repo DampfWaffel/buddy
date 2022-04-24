@@ -7,137 +7,39 @@ options:
 	
 
 discord command help:
+	aliases: hilfe, pomoc
 	prefixes: {@pre}
 	trigger:
 		#! language variable stuff
-		if {langcode::%event-guild%} is not set:
-			set {langcode::%event-guild%} to "default"
+		set {langcode::%discord id of event-guild%} to "EN_en" if {langcode::%discord id of event-guild%} is not set
+		add "Help Menu", "Info Commands", "Tool Commands" and "Fun Commands" to {_Menu::EN_en::*}
+		add "EN_en||Info||@Buddy||Shows the Prefix and the reason on why Buddy exists" to {_HelpList::*}
+		add "EN_en||Info||-help||Shows the help menu" to {_HelpList::*}
+		add "EN_en||Tool||-snippet||Shows the Snippet selection menu" to {_HelpList::*}
+		add "EN_en||Fun||-exp||Shows the Profile with Level progress" to {_HelpList::*}
+		add "EN_en||Fun||-daily||Get your Daily Coins from Buddy" to {_HelpList::*}
 		
-
- 
-		#!────────────────────────────────────────────────────────────────────────────────┐
-		#!───────────────────────────────────[DEFAULT]────────────────────────────────────┤
-		#!────────────────────────────────────────────────────────────────────────────────┘
-
-		if {langcode::%event-guild%} is "default":
-			#! INFO Commands
-
-			add " <:emote_arrow:957018597979488276> **@Buddy**   |   (  *`Shows the Prefix and the reason on why Buddy exists`* )" to {_helpmanu_info::*}
-			add " <:emote_arrow:957018597979488276> **-help**   |   (  *`Shows the help menu`* )" to {_helpmanu_info::*}
-			add " " to {_helpmanu_info::*}
-
-			#! TOOL Commands
-
-			add " <:emote_arrow:957018597979488276> **-snippet**   |   (  *`Shows the Snippet selection menu`* )" to {_helpmanu_tool::*}
-			add " " to {_helpmanu_tool::*}
-
-			#! FUN Commands
-
-			add " <:emote_arrow:957018597979488276> **-exp**   |   (  *`Shows the Profile with Level progress`* )" to {_helpmanu_fun::*}
-			add " <:emote_arrow:957018597979488276> **-daily**   |   (  *`Get your Daily Coins from Buddy`* )" to {_helpmanu_fun::*}
-			add " " to {_helpmanu_fun::*}
-
-			make embed:
-				set title of embed to "Help Menu"
-				set description of embed to " "
-				add field named " " with value "**<:emote_:957001720217604178>  |  Info Commands:**%nl%%join {_helpmanu_info::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_tools:957017548224876617>  |  Tool Commands:**%nl%%join {_helpmanu_tool::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_fun:959779057044705281>  |  Fun Commands:**%nl%%join {_helpmanu_fun::*} by nl%" to fields of embed
-				footertext
-			reply with last embed
-
-
-		#!────────────────────────────────────────────────────────────────────────────────┐
-		#!───────────────────────────────────[German]────────────────────────────────────┤
-		#!────────────────────────────────────────────────────────────────────────────────┘
+		add "Hilfe Menü", "Info Befehle", "Tool Befehle" and "Spaß Befehle" to {_Menu::DE_de::*}
+		add "DE_de||Info||@Buddy||Zeigt meine prefix, und warum es mich gibt." to {_HelpList::*}
+		add "DE_de||Info||-help||Zeigt das Hilfe Menü." to {_HelpList::*}
+		add "DE_de||Tool||-snippet||Zeigt dir die Snippet auswahl." to {_HelpList::*}
+		add "DE_de||Fun||-exp||Zeigt das Profil mit Level an." to {_HelpList::*}
+		add "DE_de||Fun||-daily||Hole dir deine Täglichen Coins ab." to {_HelpList::*}
 		
-		if {langcode::%event-guild%} is "DE_de":
-			#! INFO Commands
-
-			add " <:emote_arrow:957018597979488276> **@Buddy**   |   (  *`Zeigt meine prefix, und warum es mich gibt.`* )" to {_helpmanu_info::*}
-			add " <:emote_arrow:957018597979488276> **-help**   |   (  *`Zeigt das Hilfe Menü.`* )" to {_helpmanu_info::*}
-			add " " to {_helpmanu_info::*}
-
-			#! TOOL Commands
-
-			add " <:emote_arrow:957018597979488276> **-snippet**   |   (  *`Zeigt dir die Snippet auswahl.`* )" to {_helpmanu_tool::*}
-			add " " to {_helpmanu_tool::*}
-
-			#! FUN Commands
-
-			add " <:emote_arrow:957018597979488276> **-exp**   |   (  *`Zeigt das Profil mit Level an.`* )" to {_helpmanu_fun::*}
-			add " <:emote_arrow:957018597979488276> **-daily**   |   (  *`Ich gebe dir deine Täglcihen Coins.`* )" to {_helpmanu_fun::*}
-			add " " to {_helpmanu_fun::*}
-
-			make embed:
-				set title of embed to "Hilfe Menü"
-				set description of embed to " "
-				add field named " " with value "**<:emote_:957001720217604178>  |  Info Befehle:**%nl%%join {_helpmanu_info::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_tools:957017548224876617>  |  Tool Befehle:**%nl%%join {_helpmanu_tool::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_fun:959779057044705281>  |  Spaß Befehle:**%nl%%join {_helpmanu_fun::*} by nl%" to fields of embed
-				footertext
-			reply with last embed
-		
-
-		#!────────────────────────────────────────────────────────────────────────────────┐
-		#!───────────────────────────────────[ENGLISH]────────────────────────────────────┤
-		#!────────────────────────────────────────────────────────────────────────────────┘
-		
-		if {langcode::%event-guild%} is "EN_en":
-			#! INFO Commands
-
-			add " <:emote_arrow:957018597979488276> **@Buddy**   |   (  *`Shows the Prefix and reason why Buddy exist`* )" to {_helpmanu_info::*}
-			add " <:emote_arrow:957018597979488276> **-help**   |   (  *`Shows the help menu`* )" to {_helpmanu_info::*}
-			add " " to {_helpmanu_info::*}
-
-			#! TOOL Commands
-
-			add " <:emote_arrow:957018597979488276> **-snippet**   |   (  *`Shows the Snippet selection`* )" to {_helpmanu_tool::*}
-			add " " to {_helpmanu_tool::*}
-
-			#! FUN Commands
-
-			add " <:emote_arrow:957018597979488276> **-exp**   |   (  *`Shows the Profile with Level progress`* )" to {_helpmanu_fun::*}
-			add " <:emote_arrow:957018597979488276> **-daily**   |   (  *`Get your Daily Coins from Buddy`* )" to {_helpmanu_fun::*}
-			add " " to {_helpmanu_fun::*}
-
-			make embed:
-				set title of embed to "Help Menu"
-				set description of embed to " "
-				add field named " " with value "**<:emote_:957001720217604178>  |  Info Commands:**%nl%%join {_helpmanu_info::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_tools:957017548224876617>  |  Tool Commands:**%nl%%join {_helpmanu_tool::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_fun:959779057044705281>  |  Fun Commands:**%nl%%join {_helpmanu_fun::*} by nl%" to fields of embed
-				footertext
-			reply with last embed
-		
-		#!────────────────────────────────────────────────────────────────────────────────┐
-		#!───────────────────────────────────[POLISH]────────────────────────────────────┤
-		#!────────────────────────────────────────────────────────────────────────────────┘
-		
-		if {langcode::%event-guild%} is "PL_pl":
-			#! INFO Commands
-
-			add " <:emote_arrow:957018597979488276> **@Buddy**   |   (  *`Pokazuje Prefix i powód dlaczego Buddy powstał`* )" to {_helpmanu_info::*}
-			add " <:emote_arrow:957018597979488276> **-help**   |   (  *`Pokazuje menu pomocy`* )" to {_helpmanu_info::*}
-			add " " to {_helpmanu_info::*}
-
-			#! TOOL Commands
-
-			add " <:emote_arrow:957018597979488276> **-snippet**   |   (  *`Pokazuje menu przykładowych skryptów`* )" to {_helpmanu_tool::*}
-			add " " to {_helpmanu_tool::*}
-
-			#! FUN Commands
-
-			add " <:emote_arrow:957018597979488276> **-exp**   |   (  *`Pokazuje profil wraz z poziomem`* )" to {_helpmanu_fun::*}
-			add " <:emote_arrow:957018597979488276> **-daily**   |   (  *`Odbierz dzienne Coinsy od Buddy'ego`* )" to {_helpmanu_fun::*}
-			add " " to {_helpmanu_fun::*}
-
-			make embed:
-				set title of embed to "Help Menu"
-				set description of embed to " "
-				add field named " " with value "**<:emote_:957001720217604178>  |  Komendy informacyjne:**%nl%%join {_helpmanu_info::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_tools:957017548224876617>  |  Komendy użytkowe:**%nl%%join {_helpmanu_tool::*} by nl%" to fields of embed
-				add field named " " with value "**<:emote_fun:959779057044705281>  |  Komendy gier:**%nl%%join {_helpmanu_fun::*} by nl%" to fields of embed
-				footertext
-			reply with last embed
-
+		add "Menu Pomoc", "Komendy informacyjne", "Komendy użytkowe" and "Komendy gier" to {_Menu::PL_pl::*}
+		add "PL_pl||Info||@Buddy||Pokazuje Prefix i powód dlaczego Buddy powstał" to {_HelpList::*}
+		add "PL_pl||Info||-help||Pokazuje menu pomocy" to {_HelpList::*}
+		add "PL_pl||Tool||-snippet||Pokazuje menu przykładowych skryptów" to {_HelpList::*}
+		add "PL_pl||Fun||-exp||Pokazuje profil wraz z poziomem" to {_HelpList::*}
+		add "PL_pl||Fun||-daily||Odbierz dzienne Coinsy od Buddy'ego" to {_HelpList::*}
+		loop {_HelpList::*}:
+			set {_value::*} to split "%loop-value%" at "||"
+			add " <:emote_arrow:957018597979488276> **%{_value::3}%**   |   (  *`%{_value::4}%`* )" to {_HelpMenu::%{_value::2}%::%{_value::1}%::*}
+		make embed:
+			set title of embed to "%{_Menu::%{langcode::%discord id of event-guild%}%::1}%"
+			set description of embed to " "
+			add field named " " with value "**<:emote_:957001720217604178>  |  %{_Menu::%{langcode::%discord id of event-guild%}%::2}%:**%nl%%join {_HelpMenu::Info::%{langcode::%discord id of event-guild%}%::*} by nl%" to fields of embed
+			add field named " " with value "**<:emote_tools:957017548224876617>  |  %{_Menu::%{langcode::%discord id of event-guild%}%::3}%:**%nl%%join {_HelpMenu::Tool::%{langcode::%discord id of event-guild%}%::*} by nl%" to fields of embed
+			add field named " " with value "**<:emote_fun:959779057044705281>  |  %{_Menu::%{langcode::%discord id of event-guild%}%::4}%:**%nl%%join {_HelpMenu::Fun::%{langcode::%discord id of event-guild%}%::*} by nl%" to fields of embed
+			footertext
+		reply with last embed
